@@ -1,157 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suresh Babu Danaboina | IT Dashboard Portfolio</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Suresh Babu Danaboina | IT Dashboard Portfolio</title>
 
-  <style>
-    :root {
-      --bg-dark: #020617;
-      --panel: #0f172a;
-      --accent: #ef4444;
-      --text: #e5e7eb;
-      --muted: #94a3b8;
-    }
+<style>
+:root {
+  --bg-dark: #020617;
+  --panel: #0f172a;
+  --accent: #ef4444;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+}
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--bg-dark);
-      color: var(--text);
-      height: 100vh;
-      overflow: hidden;
-    }
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg-dark);
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+}
 
-    /* TOP NAV BAR */
-    header {
-      height: 70px;
-      background: rgba(2,6,23,0.7);
-      backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 4%;
-      position: fixed;
-      width: 100%;
-      z-index: 100;
-    }
+/* HEADER */
+header {
+  height: 70px;
+  background: rgba(2,6,23,0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4%;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
 
-    header .brand {
-      font-size: 1.4rem;
-      font-weight: 700;
-    }
+.brand {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
 
-    header nav {
-      display: flex;
-      gap: 2rem;
-    }
+nav {
+  display: flex;
+  gap: 2rem;
+}
 
-    header nav a {
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 600;
-      position: relative;
-      cursor: pointer;
-    }
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative;
+}
 
-    header nav a.active::after,
-    header nav a:hover::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 100%;
-      height: 2px;
-      background: var(--accent);
-    }
+nav a.active::after,
+nav a:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+}
 
-    /* DASHBOARD CONTAINER */
-    .dashboard {
-      height: 100vh;
-      padding-top: 70px;
-    }
+/* DASHBOARD */
+.dashboard {
+  height: 100vh;
+  padding-top: 70px;
+}
 
-    .panel {
-      display: none;
-      height: calc(100vh - 70px);
-      padding: 4% 6%;
-    }
+.panel {
+  display: none;
+  height: calc(100vh - 70px);
+  padding: 4% 6%;
+  overflow-y: auto;
+}
 
-    .panel.active {
-      display: flex;
-    }
+.panel.active {
+  display: flex;
+  flex-direction: column;
+}
 
-    /* HOME PANEL */
-    .home {
-      background:
-        linear-gradient(rgba(2,6,23,0.75), rgba(2,6,23,0.9)),
-        url('profile.png') center/cover no-repeat;
-      flex-direction: column;
-      justify-content: center;
-    }
+/* HOME */
+.home {
+  background:
+    linear-gradient(rgba(2,6,23,0.75), rgba(2,6,23,0.9)),
+    url('profile.png') center/cover no-repeat;
+  justify-content: center;
+}
 
-    .home h1 {
-      font-size: 3.6rem;
-      margin-bottom: 1rem;
-    }
+.home h1 {
+  font-size: 3.6rem;
+  margin-bottom: 1rem;
+}
 
-    .home h1 span { color: var(--accent); }
+.home h1 span { color: var(--accent); }
 
-    .home p {
-      max-width: 700px;
-      font-size: 1.15rem;
-      line-height: 1.7;
-      color: #cbd5f5;
-      margin-bottom: 2rem;
-    }
+.home p {
+  max-width: 700px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #cbd5f5;
+  margin-bottom: 2rem;
+}
 
-    .cta a {
-      display: inline-block;
-      margin-right: 1rem;
-      padding: 0.9rem 2.2rem;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 600;
-    }
+.cta a {
+  display: inline-block;
+  margin-right: 1rem;
+  padding: 0.9rem 2.2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+}
 
-    .primary { background: var(--accent); color: white; }
-    .outline { border: 2px solid white; color: white; }
+.primary { background: var(--accent); color: white; }
+.outline { border: 2px solid white; color: white; cursor:pointer; }
 
-    /* CONTENT PANELS */
-    .content {
-      flex-direction: column;
-      justify-content: center;
-    }
+/* CONTENT */
+.content {
+  justify-content: center;
+}
 
-    .content h2 {
-      font-size: 2.6rem;
-      margin-bottom: 2rem;
-    }
+.content h2 {
+  font-size: 2.6rem;
+  margin-bottom: 2rem;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2rem;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
 
-    .card {
-      background: var(--panel);
-      padding: 2rem;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
+.card {
+  background: var(--panel);
+  padding: 2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+}
 
-    ul { margin-left: 1.2rem; }
-    li { margin-bottom: 0.6rem; }
+.card.clickable {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
 
-    @media (max-width: 768px) {
-      header nav { gap: 1rem; }
-      .home h1 { font-size: 2.4rem; }
-    }
-  </style>
+.card.clickable:hover {
+  transform: translateY(-6px);
+}
+
+/* LISTS */
+ul { margin-left: 1.2rem; }
+li { margin-bottom: 0.6rem; }
+
+.section {
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  nav { gap: 1rem; }
+  .home h1 { font-size: 2.4rem; }
+}
+</style>
 </head>
+
 <body>
 
 <header>
@@ -168,86 +183,204 @@
 
 <div class="dashboard">
 
-  <!-- HOME -->
-  <section id="home" class="panel home active">
-    <h1>Hello, I’m <span>Suresh Babu</span></h1>
-    <p>
-      Master’s Graduate and IT Professional with strong foundations in software development,
-      system analysis, application security, and cloud fundamentals.
-    </p>
-    <div class="cta">
-      <a href="resume.pdf" class="primary" download>Download Resume</a>
-      <a onclick="showPanel('projects')" class="outline">View Projects</a>
+<!-- HOME -->
+<section id="home" class="panel home active">
+  <h1>Hello, I’m <span>Suresh Babu</span></h1>
+  <p>
+    Master’s Graduate and IT Professional with strong foundations in software development,
+    system analysis, application security, and cloud fundamentals.
+  </p>
+  <div class="cta">
+    <a class="primary">Download Resume</a>
+    <a onclick="showPanel('projects')" class="outline">View Projects</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="panel content">
+  <h2>About Me</h2>
+  <p style="max-width:800px;color:var(--muted);line-height:1.8;">
+I am a recent Master’s graduate in Computer Science with a strong foundation in software development, system analysis, and application security. Through academic projects and hands-on practice, I have gained practical exposure to building, testing, and securing web and API-based applications.
+I am detail-oriented, adaptable, and quick to learn new technologies. I enjoy understanding systems end-to-end, identifying potential issues, and applying structured problem-solving approaches to improve reliability, performance, and security. I am comfortable working both independently and as part of a team in fast-paced environments.
+I am currently seeking an entry-level opportunity in the IT industry where I can apply my skills, continue learning from experienced professionals, and contribute effectively to real-world projects from day one.
+  </p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="panel content">
+  <h2>Technical Skills</h2>
+  <div class="grid">
+    <div class="card">Computer Science Fundamentals, OOP, OS, Networks, DBMS</div>
+    <div class="card">HTML, CSS, JavaScript, Python, Java, REST APIs, Git</div>
+    <div class="card">Secure Coding, OWASP Top 10, Web & API Testing</div>
+    <div class="card">Linux, Postman, Docker (Basics), Cloud Fundamentals</div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="panel content">
+  <h2>Experience</h2>
+  <div class="card">
+    <strong>Cyber Security / IT Intern – CCL Products (India) Ltd.</strong>
+    <ul style="margin-top:1rem;">
+      <li>Assisted in web application and internal system security testing under the guidance of senior team members.</li>
+      <li>Performed basic vulnerability assessment and security validation focusing on authentication, input validation, and configuration issues.</li>
+      <li>Supported testing of web and API-based applications using industry-standard tools and documented findings clearly.</li>
+      <li>Helped track identified issues and supported remediation verification as part of vulnerability management activities.</li>
+      <li>Collaborated with IT and security teams to understand enterprise systems, testing workflows, and secure operational practices.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="panel content">
+  <h2>Projects</h2>
+  <div class="grid">
+
+    <div class="card clickable" onclick="showPanel('project-vapt')">
+      <strong>Web Application Security Assessment (VAPT)</strong>
+      <p style="margin-top:0.8rem;color:var(--muted);">
+        End-to-end vulnerability assessment and penetration testing.
+      </p>
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="panel content">
-    <h2>About Me</h2>
-    <p style="max-width:800px;color:var(--muted);line-height:1.8;">
-      I am a Master’s graduate with a strong academic background in computer science and
-      practical exposure to real-world IT systems. I am adaptable, detail-oriented, and
-      actively seeking opportunities across the IT industry.
-    </p>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="panel content">
-    <h2>Technical Skills</h2>
-    <div class="grid">
-      <div class="card">Computer Science Fundamentals, OOP, OS, Networks, DBMS</div>
-      <div class="card">HTML, CSS, JavaScript, Python, Java, REST APIs, Git</div>
-      <div class="card">Secure Coding, OWASP Top 10, Web & API Testing</div>
-      <div class="card">Linux, Postman, Docker (Basics), Cloud Fundamentals</div>
+    <div class="card clickable" onclick="showPanel('project-secure-app')">
+      <strong>Secure Web Application Development</strong>
+      <p style="margin-top:0.8rem;color:var(--muted);">
+        Secure application with authentication and role-based access control.
+      </p>
     </div>
-  </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="panel content">
-    <h2>Experience</h2>
-    <div class="grid">
-      <div class="card">
-        <strong>IT / Technology Analyst</strong>
-        <ul style="margin-top:1rem;">
-          <li>Worked on software applications involving development, testing, and analysis.</li>
-          <li>Performed functional testing and basic security validation.</li>
-          <li>Collaborated with teams to improve system quality.</li>
-        </ul>
-      </div>
+    <div class="card">
+      System & Application Assessment
     </div>
-  </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="panel content">
-    <h2>Projects</h2>
-    <div class="grid">
-      <div class="card">Web Application Development & Testing</div>
-      <div class="card">API Design & Analysis</div>
-      <div class="card">System & Application Assessment</div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="panel content">
-    <h2>Contact</h2>
-    <p style="color:var(--muted);">Email: suresh613d@gmail.com<br/>LinkedIn: www.linkedin.com/in/suresh6303 | GitHub: github.com/D-suresh</p>
-  </section>
+<!-- PROJECT 1 DETAILS -->
+<section id="project-vapt" class="panel content">
+  <h2>Web Application Security Assessment (VAPT)</h2>
+
+  <p style="color:var(--muted);max-width:900px;line-height:1.8;">
+    Performed a comprehensive Vulnerability Assessment and Penetration Testing (VAPT)
+    on a web application to identify security weaknesses across authentication,
+    authorization, input validation, and business logic.
+  </p>
+
+  <div class="section">
+    <h3>Features</h3>
+    <ul>
+      <li>Manual and automated security testing</li>
+      <li>OWASP Top 10 coverage</li>
+      <li>Real-world attack simulation</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🛠 Tools & Technologies</h3>
+    <ul>
+      <li>Burp Suite, OWASP ZAP</li>
+      <li>Nmap, SQLMap</li>
+      <li>Kali Linux</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔐 Security Measures Implemented</h3>
+    <ul>
+      <li>Input validation and sanitization</li>
+      <li>Authentication and access control testing</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>📊 Outcome / Impact</h3>
+    <ul>
+      <li>Identified high and medium-risk vulnerabilities</li>
+      <li>Provided remediation guidance and PoCs</li>
+      <li>Improved overall security posture</li>
+    </ul>
+  </div>
+
+  <br/>
+  <a onclick="showPanel('projects')" class="outline">← Back to Projects</a>
+</section>
+
+<!-- PROJECT 3 DETAILS -->
+<section id="project-secure-app" class="panel content">
+  <h2>Secure Web Application Development</h2>
+
+  <p style="color:var(--muted);max-width:900px;line-height:1.8;">
+    Designed and developed a secure web application following secure SDLC practices,
+    focusing on authentication, authorization, and common web attack prevention.
+  </p>
+
+  <div class="section">
+    <h3>Features</h3>
+    <ul>
+      <li>User authentication & authorization</li>
+      <li>Role-Based Access Control (RBAC)</li>
+      <li>Secure session handling</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🛠 Tools & Technologies</h3>
+    <ul>
+      <li>HTML, CSS, JavaScript</li>
+      <li>Python / Java</li>
+      <li>SQL, Git</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>🔐 Security Measures Implemented</h3>
+    <ul>
+      <li>Password hashing</li>
+      <li>Input validation & output encoding</li>
+      <li>XSS & SQL Injection prevention</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h3>📊 Outcome / Impact</h3>
+    <ul>
+      <li>Reduced common web vulnerabilities</li>
+      <li>Improved application reliability</li>
+      <li>Demonstrated secure coding practices</li>
+    </ul>
+  </div>
+
+  <br/>
+  <a onclick="showPanel('projects')" class="outline">← Back to Projects</a>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="panel content">
+  <h2>Contact</h2>
+  <p style="color:var(--muted);">
+    Email: suresh613d@gmail.com<br/>
+    LinkedIn: www.linkedin.com/in/suresh6303 |
+    GitHub: github.com/D-suresh
+  </p>
+</section>
 
 </div>
 
 <script>
-  function showPanel(id) {
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
 
-    document.querySelectorAll('header nav a').forEach(a => a.classList.remove('active'));
-    const links = document.querySelectorAll('header nav a');
-    links.forEach(link => {
-      if (link.textContent.toLowerCase() === id) {
-        link.classList.add('active');
-      }
-    });
-  }
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  const links = document.querySelectorAll('nav a');
+  links.forEach(link => {
+    if (link.textContent.toLowerCase() === id.split('-')[0]) {
+      link.classList.add('active');
+    }
+  });
+}
 </script>
 
 </body>
