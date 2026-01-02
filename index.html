@@ -6,9 +6,6 @@
 <title>Suresh Babu | Application Security Intern Portfolio</title>
 
 <style>
-/* =====================
-   GLOBAL THEME (PRO)
-===================== */
 :root {
   --bg-main: #020617;
   --bg-panel: #0b1224;
@@ -30,9 +27,7 @@ body {
   overflow: hidden;
 }
 
-/* =====================
-   HEADER / NAV
-===================== */
+/* HEADER */
 header {
   height: 72px;
   background: rgba(2,6,23,0.75);
@@ -48,9 +43,8 @@ header {
 }
 
 .brand {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
 }
 
 nav {
@@ -83,9 +77,7 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* =====================
-   LAYOUT
-===================== */
+/* LAYOUT */
 .dashboard {
   height: 100vh;
   padding-top: 72px;
@@ -106,14 +98,9 @@ nav a:hover::after {
   opacity: 1;
 }
 
-/* =====================
-   HOME
-===================== */
+/* HOME */
 .home {
   justify-content: center;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(239,68,68,0.08), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(248,113,113,0.06), transparent 40%);
 }
 
 .home h1 {
@@ -127,7 +114,7 @@ nav a:hover::after {
 }
 
 .home p {
-  max-width: 760px;
+  max-width: 840px;
   font-size: 1.1rem;
   line-height: 1.75;
   color: #c7d2fe;
@@ -141,7 +128,6 @@ nav a:hover::after {
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.95rem;
 }
 
 .primary {
@@ -154,12 +140,9 @@ nav a:hover::after {
   color: var(--accent-soft);
 }
 
-/* =====================
-   COMMON CONTENT
-===================== */
+/* COMMON */
 .content h2 {
   font-size: 2.4rem;
-  font-weight: 700;
   margin-bottom: 2rem;
 }
 
@@ -189,9 +172,7 @@ nav a:hover::after {
 ul { margin-left: 1.1rem; }
 li { margin-bottom: 0.55rem; }
 
-/* =====================
-   MODAL
-===================== */
+/* MODAL */
 .modal {
   display: none;
   position: fixed;
@@ -218,23 +199,22 @@ li { margin-bottom: 0.55rem; }
   cursor: pointer;
 }
 
-/* =====================
-   RESPONSIVE
-===================== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .home h1 { font-size: 2.2rem; }
   nav { gap: 1.2rem; }
 }
 </style>
 </head>
+
 <body>
+
 <header>
   <div class="brand">Suresh.</div>
   <nav>
     <a class="active" onclick="showPanel('home')">Home</a>
     <a onclick="showPanel('about')">About</a>
     <a onclick="showPanel('skills')">Skills</a>
-    <a onclick="showPanel('labs')">Labs</a>
     <a onclick="showPanel('projects')">Projects</a>
     <a onclick="showPanel('contact')">Contact</a>
   </nav>
@@ -246,9 +226,9 @@ li { margin-bottom: 0.55rem; }
 <section id="home" class="panel home active">
   <h1>Hello, I'm <span>Suresh Babu</span></h1>
   <p>
-    Application Security aspirant with a strong academic foundation and a focused interest in securing
-    modern web and API-based applications. Actively learning industry-relevant AppSec practices and
-    preparing for a career in cybersecurity consulting.
+    Application Security enthusiast with a postgraduate background (MCA – KL University),
+    focused on identifying, validating, and mitigating security vulnerabilities
+    in modern web and API-based applications.
   </p>
   <div class="cta">
     <a class="primary" href="resume.pdf" download>Download Resume</a>
@@ -259,16 +239,15 @@ li { margin-bottom: 0.55rem; }
 <!-- ABOUT -->
 <section id="about" class="panel content">
   <h2>About Me</h2>
-  <p style="max-width:900px;color:var(--text-muted);line-height:1.9;">
-    I am a postgraduate student with a Master of Computer Applications (MCA) from KL University (KLU),
-    where I developed a strong understanding of computer science fundamentals, software development,
-    and system design. During my academic journey, I discovered a strong interest in cybersecurity,
-    particularly in application security.
+  <p style="max-width:940px;color:var(--text-muted);line-height:1.9;">
+    I am a postgraduate with a Master of Computer Applications (MCA) from KL University (KLU),
+    where I built a strong foundation in computer science, programming, operating systems,
+    and networking.
     <br><br>
-    I am highly motivated to build a career in the Application Security domain and actively invest my
-    time in learning how real-world vulnerabilities arise, how attackers exploit them, and how secure
-    coding and testing practices can prevent them. I enjoy continuous learning, hands-on practice,
-    and collaborating with others to improve security posture.
+    I am highly enthusiastic about Application Security and enjoy understanding how real-world
+    vulnerabilities arise, how attackers exploit them, and how secure design and testing practices
+    can prevent them. I actively learn through structured labs, security research,
+    and hands-on testing to build practical, real-world application security skills.
   </p>
 </section>
 
@@ -281,9 +260,10 @@ li { margin-bottom: 0.55rem; }
       <ul>
         <li>OWASP Top 10 (Web & API)</li>
         <li>Authentication & Authorization Testing</li>
-        <li>Input Validation & Business Logic Testing</li>
+        <li>Access Control & Business Logic Testing</li>
       </ul>
     </div>
+
     <div class="card">
       <strong>Security Tools</strong>
       <ul>
@@ -291,56 +271,29 @@ li { margin-bottom: 0.55rem; }
         <li>Postman, SQLmap, Nmap</li>
       </ul>
     </div>
+
     <div class="card">
-      <strong>Programming & Tech</strong>
+      <strong>Programming & Technologies</strong>
       <ul>
         <li>Python, JavaScript (Basics)</li>
-        <li>Git</li>
+        <li>REST APIs, Git</li>
       </ul>
     </div>
+
     <div class="card">
-      <strong>Foundations</strong>
+      <strong>Computer Science Foundations</strong>
       <ul>
-        <li>Computer Networks & OS</li>
+        <li>Operating Systems & Computer Networks</li>
         <li>Secure SDLC Awareness</li>
       </ul>
     </div>
-  </div>
-</section>
 
-<!-- LABS -->
-<section id="labs" class="panel content">
-  <h2>Hands-On Practice</h2>
-  <div class="grid">
     <div class="card">
-      <strong>Web Security Labs</strong>
-      <p style="color:var(--text-muted);line-height:1.7;">
-        Practicing structured labs to understand how common web vulnerabilities work,
-        focusing on methodology, exploitation flow, and remediation rather than quantity.
-      </p>
+      <strong>Currently Learning</strong>
       <ul>
-        <li>SQL Injection & XSS fundamentals</li>
-        <li>Authentication logic issues</li>
-        <li>Access control weaknesses</li>
-      </ul>
-    </div>
-    <div class="card">
-      <strong>Bug Bounty Learning</strong>
-      <p style="color:var(--text-muted);line-height:1.7;">
-        Exploring bug bounty programs to understand real-world attack surfaces,
-        report quality, and responsible disclosure workflows.
-      </p>
-      <ul>
-        <li>Reconnaissance & parameter analysis</li>
-        <li>Learning from public vulnerability reports</li>
-      </ul>
-    </div>
-    <div class="card">
-      <strong>Self Practice</strong>
-      <ul>
-        <li>Testing intentionally vulnerable applications</li>
-        <li>Using Burp Repeater & manual testing</li>
-        <li>Analyzing root cause & mitigation</li>
+        <li>API Security</li>
+        <li>SBOM & DevSecOps Basics</li>
+        <li>AI Security Fundamentals</li>
       </ul>
     </div>
   </div>
@@ -351,17 +304,14 @@ li { margin-bottom: 0.55rem; }
   <h2>Projects</h2>
   <div class="grid">
     <div class="card clickable" onclick="openProject('vapt')">
-      <strong>Web Application Security Assessment</strong>
-      <p style="color:var(--text-muted);margin-top:0.6rem;">End-to-end VAPT learning project</p>
+      <strong>Web Application Security Assessment (VAPT)</strong>
     </div>
     <div class="card clickable" onclick="openProject('secure')">
-      <strong>Secure Web Application</strong>
-      <p style="color:var(--text-muted);margin-top:0.6rem;">Secure authentication & access control</p>
+      <strong>Secure Login Web Application</strong>
     </div>
   </div>
 </section>
 
-<!-- MODAL -->
 <div id="project-modal" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeModal()">×</span>
@@ -373,22 +323,11 @@ li { margin-bottom: 0.55rem; }
 <section id="contact" class="panel content">
   <h2>Contact</h2>
   <div class="grid">
-    <div class="card">
-      <strong>Email</strong>
-      <p>suresh613d@gmail.com</p>
-    </div>
-    <div class="card">
-      <strong>LinkedIn</strong>
-      <p>linkedin.com/in/suresh6303</p>
-    </div>
-    <div class="card">
-      <strong>GitHub</strong>
-      <p>github.com/D-suresh</p>
-    </div>
-    <div class="card">
-      <strong>Availability</strong>
-      <p>Open to Application Security Intern & Entry-Level Roles</p>
-    </div>
+    <div class="card"><strong>Email</strong><p>suresh613d@gmail.com</p></div>
+    <div class="card"><strong>LinkedIn</strong><p>linkedin.com/in/suresh6303</p></div>
+    <div class="card"><strong>GitHub</strong><p>github.com/D-suresh</p></div>
+    <div class="card"><strong>Preferred Roles</strong><p>Application Security Intern, AppSec Analyst (Entry-Level)</p></div>
+    <div class="card"><strong>Availability</strong><p>Open to On-site & Internship Roles</p></div>
   </div>
 </section>
 
@@ -407,31 +346,62 @@ function openProject(name) {
 
   if (name === 'vapt') {
     box.innerHTML = `
-      <h2>Web Application Security Assessment</h2>
-      <p style="color:var(--text-muted);line-height:1.8;">A learning-focused project simulating a real-world application security assessment to understand testing methodology, vulnerability identification, and remediation guidance.</p>
-      <h3>Focus Areas</h3>
+      <h2>Web Application Security Assessment (VAPT)</h2>
+      <p style="color:var(--text-muted);line-height:1.8;">
+        A learning-focused project simulating a real-world penetration testing engagement.
+        The objective was to identify vulnerabilities, understand their impact,
+        and recommend remediation.
+      </p>
+
+      <h3>🧭 Scope</h3>
       <ul>
-        <li>Authentication & session handling</li>
-        <li>Input validation & access control</li>
-        <li>OWASP Top 10 aligned testing</li>
+        <li>Authentication & session management</li>
+        <li>User profile & account features</li>
+        <li>Input handling & API endpoints</li>
       </ul>
-      <h3>Outcome</h3>
-      <p>Improved understanding of how security flaws are identified, validated, and communicated in professional assessments.</p>
+
+      <h3>🔍 Methodology</h3>
+      <ul>
+        <li>Reconnaissance & application mapping</li>
+        <li>Manual testing aligned with OWASP Top 10</li>
+        <li>Payload crafting & validation</li>
+      </ul>
+
+      <h3>🚨 Key Findings</h3>
+      <ul>
+        <li><strong>Critical – SQL Injection</strong> (CVSS 9.8)</li>
+        <li><strong>High – IDOR</strong> (CVSS 8.1)</li>
+        <li><strong>Medium – Reflected XSS</strong> (CVSS 6.1)</li>
+      </ul>
+
+      <h3>🛡️ Recommendations</h3>
+      <ul>
+        <li>Use parameterized queries</li>
+        <li>Enforce server-side authorization</li>
+        <li>Apply output encoding & security headers</li>
+      </ul>
+
+      <h3>🧰 Tools Used</h3>
+      <p>Burp Suite, SQLmap, OWASP ZAP, Nmap</p>
     `;
   }
 
   if (name === 'secure') {
     box.innerHTML = `
-      <h2>Secure Web Application</h2>
-      <p style="color:var(--text-muted);line-height:1.8;">A development-focused project emphasizing secure coding practices and defensive design.</p>
-      <h3>Key Implementations</h3>
+      <h2>Secure Login Web Application</h2>
+      <p style="color:var(--text-muted);line-height:1.8;">
+        A project demonstrating secure authentication and authorization practices.
+      </p>
+
+      <h3>🔐 Security Controls</h3>
       <ul>
-        <li>Secure authentication flows</li>
-        <li>Role-based access control</li>
-        <li>Basic attack prevention mechanisms</li>
+        <li>Password hashing</li>
+        <li>RBAC implementation</li>
+        <li>Input validation & output encoding</li>
       </ul>
-      <h3>Outcome</h3>
-      <p>Strengthened understanding of how secure development reduces application risk.</p>
+
+      <h3>🧰 Tech Stack</h3>
+      <p>Python, SQLite, Vanilla JavaScript</p>
     `;
   }
 }
