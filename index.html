@@ -10,7 +10,6 @@
 
 <style>
 :root {
-  --bg:#020617;
   --card:#0b1224;
   --accent:#22c55e;
   --text:#e5e7eb;
@@ -24,37 +23,40 @@ body{
   color:var(--text);
 }
 
-/* 🔥 FINAL BACKGROUND FIX */
+/* 🔥 BACKGROUND IMAGE (FINAL FIXED) */
 body::before{
   content:"";
   position:fixed;
   inset:0;
 
-  /* ✅ FINAL WORKING PATH */
   background-image: url("profile.png");
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  opacity:0.18; /* increased so you SEE it clearly */
+  opacity:0.25; /* 🔥 visible now */
 
   z-index:-2;
 
   animation: floatBg 40s ease-in-out infinite alternate;
 }
 
-/* DARK OVERLAY */
+/* 🔥 CORRECT OVERLAY (NOT HIDING IMAGE) */
 body::after{
   content:"";
   position:fixed;
   inset:0;
-  background:linear-gradient(180deg,#020617 0%,#030a1a 100%);
-  opacity:0.85;
+
+  background: linear-gradient(
+    rgba(2,6,23,0.6),
+    rgba(3,10,26,0.85)
+  );
+
   z-index:-1;
 }
 
-/* SMOOTH ANIMATION */
+/* ANIMATION */
 @keyframes floatBg {
   0%{transform:scale(1);}
   50%{transform:scale(1.05) translate(-10px,-10px);}
@@ -229,7 +231,7 @@ Specialized in Web, API & Mobile security, secure code review, and vulnerability
 <div class="card">
 <strong>Senior Security Analyst – Armo Tech</strong>
 <ul>
-<li>Web, API, Mobile VAPT for BFSI apps</li>
+<li>Performed Web, API, Mobile VAPT for BFSI apps</li>
 <li>API security testing & vulnerability analysis</li>
 <li>Secure code review & remediation</li>
 <li>Prepared detailed reports</li>
