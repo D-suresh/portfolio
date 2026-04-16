@@ -1,209 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Suresh Babu | Application Security Intern Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suresh Babu | Application Security Engineer</title>
+
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg-main: #020617;
-  --bg-panel: #0b1224;
-  --bg-soft: #0f172a;
-  --accent: #ef4444;
-  --accent-soft: #f87171;
-  --text-main: #e5e7eb;
-  --text-muted: #94a3b8;
-  --border-soft: rgba(255,255,255,0.08);
+  --bg-main:#020617;
+  --bg-panel:#0b1224;
+  --accent:#22c55e;
+  --text-main:#e5e7eb;
+  --text-muted:#94a3b8;
+  --border:rgba(255,255,255,0.06);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  background: linear-gradient(180deg, #020617 0%, #030a1a 100%);
-  color: var(--text-main);
-  height: 100vh;
-  overflow: hidden;
+/* 🔥 BACKGROUND IMAGE + ANIMATION */
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--text-main);
+  position:relative;
+  overflow:hidden;
+}
+
+/* Background image */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url('profile.png') center/cover no-repeat;
+  opacity:0.08;
+  z-index:-2;
+  animation:floatBg 25s ease-in-out infinite alternate;
+}
+
+/* Dark overlay */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(180deg,#020617 0%,#030a1a 100%);
+  opacity:0.95;
+  z-index:-1;
+}
+
+/* Animation */
+@keyframes floatBg {
+  0%{transform:scale(1) translate(0,0);}
+  50%{transform:scale(1.05) translate(-20px,-20px);}
+  100%{transform:scale(1.08) translate(20px,20px);}
 }
 
 /* HEADER */
-header {
-  height: 72px;
-  background: rgba(2,6,23,0.75);
-  backdrop-filter: blur(14px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 4%;
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-  border-bottom: 1px solid var(--border-soft);
+header{
+  height:70px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0 6%;
+  position:fixed;
+  width:100%;
+  background:rgba(2,6,23,0.6);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
 }
 
-.brand {
-  font-size: 1.4rem;
-  font-weight: 700;
+.brand{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--accent);
 }
 
-nav {
-  display: flex;
-  gap: 2rem;
+nav{display:flex;gap:1.5rem;}
+nav a{
+  color:var(--text-muted);
+  cursor:pointer;
+  font-size:0.9rem;
+  transition:0.3s;
+}
+nav a:hover{color:var(--accent);}
+
+/* PANELS */
+.dashboard{padding-top:70px;}
+.panel{
+  display:none;
+  padding:6% 8%;
+  height:calc(100vh - 70px);
+  overflow:auto;
+}
+.panel.active{display:block;}
+
+/* TYPOGRAPHY */
+h1{font-size:2.8rem;margin-bottom:1rem;}
+h2{font-size:2rem;margin-bottom:1.5rem;color:var(--accent);}
+p{color:var(--text-muted);line-height:1.7;max-width:850px;}
+ul{margin-top:1rem;margin-left:1.2rem;}
+li{margin-bottom:0.5rem;color:#cbd5f5;}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:1.5rem;
 }
 
-nav a {
-  color: var(--text-main);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  cursor: pointer;
-  position: relative;
+/* CARDS */
+.card{
+  background:linear-gradient(145deg,#0b1224,#0a0f1c);
+  padding:1.5rem;
+  border-radius:14px;
+  border:1px solid var(--border);
+  transition:0.3s;
 }
 
-nav a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.3s ease;
+.card:hover{
+  transform:translateY(-5px);
+  border-color:var(--accent);
 }
 
-nav a.active::after,
-nav a:hover::after {
-  width: 100%;
+.card strong{
+  display:block;
+  margin-bottom:0.6rem;
 }
 
-/* LAYOUT */
-.dashboard {
-  height: 100vh;
-  padding-top: 72px;
-}
+/* SCROLL */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-thumb{background:#1f2937;border-radius:10px;}
 
-.panel {
-  display: none;
-  height: calc(100vh - 72px);
-  padding: 4% 7%;
-  overflow-y: auto;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-
-.panel.active {
-  display: flex;
-  flex-direction: column;
-  opacity: 1;
-}
-
-/* HOME */
-.home {
-  justify-content: center;
-}
-
-.home h1 {
-  font-size: 3.2rem;
-  font-weight: 800;
-  margin-bottom: 1.2rem;
-}
-
-.home h1 span {
-  color: var(--accent);
-}
-
-.home p {
-  max-width: 840px;
-  font-size: 1.1rem;
-  line-height: 1.75;
-  color: #c7d2fe;
-  margin-bottom: 2.4rem;
-}
-
-.cta a {
-  display: inline-block;
-  margin-right: 1rem;
-  padding: 0.85rem 2.2rem;
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.primary {
-  background: var(--accent);
-  color: #fff;
-}
-
-.outline {
-  border: 1.5px solid var(--accent-soft);
-  color: var(--accent-soft);
-}
-
-/* COMMON */
-.content h2 {
-  font-size: 2.4rem;
-  margin-bottom: 2rem;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-
-.card {
-  background: linear-gradient(180deg, var(--bg-panel), var(--bg-soft));
-  padding: 2rem;
-  border-radius: 18px;
-  border: 1px solid var(--border-soft);
-}
-
-.card.clickable {
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.card.clickable:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-}
-
-ul { margin-left: 1.1rem; }
-li { margin-bottom: 0.55rem; }
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.75);
-  backdrop-filter: blur(8px);
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
-
-.modal-content {
-  background: linear-gradient(180deg, var(--bg-panel), var(--bg-soft));
-  padding: 2.2rem;
-  border-radius: 20px;
-  max-width: 820px;
-  width: 92%;
-  border: 1px solid var(--border-soft);
-}
-
-.close {
-  float: right;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .home h1 { font-size: 2.2rem; }
-  nav { gap: 1.2rem; }
-}
 </style>
 </head>
 
@@ -212,202 +139,170 @@ li { margin-bottom: 0.55rem; }
 <header>
   <div class="brand">Suresh.</div>
   <nav>
-    <a class="active" onclick="showPanel('home')">Home</a>
-    <a onclick="showPanel('about')">About</a>
-    <a onclick="showPanel('skills')">Skills</a>
-    <a onclick="showPanel('projects')">Projects</a>
-    <a onclick="showPanel('contact')">Contact</a>
+    <a onclick="show('home')">Home</a>
+    <a onclick="show('about')">About</a>
+    <a onclick="show('skills')">Skills</a>
+    <a onclick="show('experience')">Experience</a>
+    <a onclick="show('projects')">VAPT</a>
+    <a onclick="show('certs')">Certifications</a>
+    <a onclick="show('contact')">Contact</a>
   </nav>
 </header>
 
 <div class="dashboard">
 
 <!-- HOME -->
-<section id="home" class="panel home active">
-  <h1>Hello, I'm <span>Suresh Babu</span></h1>
-  <p>
-    Application Security enthusiast with a postgraduate background (MCA – KL University),
-    focused on identifying, validating, and mitigating security vulnerabilities
-    in modern web and API-based applications.
-  </p>
-  <div class="cta">
-    <a class="primary" href="resume.pdf" download>Download Resume</a>
-    <a class="outline" onclick="showPanel('projects')">View Projects</a>
-  </div>
+<section id="home" class="panel active">
+<h1>Application Security Engineer</h1>
+<p>
+4.2+ years IT experience with 3.5+ years in Application Security and VAPT across BFSI and enterprise environments.
+Expert in Web, API, and Mobile security testing, secure code review, and vulnerability management.
+</p>
+
+<ul>
+<li>✔ OWASP Top 10 & SANS Top 25</li>
+<li>✔ Web, API, Mobile & Infra Security</li>
+<li>✔ Secure SDLC | Threat Modeling | Risk Assessment</li>
+</ul>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="panel content">
-  <h2>About Me</h2>
-  <p style="max-width:940px;color:var(--text-muted);line-height:1.9;">
-    I am a postgraduate with a Master of Computer Applications (MCA) from KL University (KLU),
-    where I built a strong foundation in computer science, programming, operating systems,
-    and networking.
-    <br><br>
-    I am highly enthusiastic about Application Security and enjoy understanding how real-world
-    vulnerabilities arise, how attackers exploit them, and how secure design and testing practices
-    can prevent them. I actively learn through structured labs, security research,
-    and hands-on testing to build practical, real-world application security skills.
-  </p>
+<section id="about" class="panel">
+<h2>Professional Summary</h2>
+<p>
+Results-driven Application Security Engineer experienced in manual penetration testing,
+API security assessments, secure code reviews, and vulnerability management.
+Skilled in identifying vulnerabilities and collaborating with developers for remediation.
+</p>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="panel content">
-  <h2>Core Skills</h2>
-  <div class="grid">
-    <div class="card">
-      <strong>Application Security</strong>
-      <ul>
-        <li>OWASP Top 10 (Web & API)</li>
-        <li>Authentication & Authorization Testing</li>
-        <li>Access Control & Business Logic Testing</li>
-      </ul>
-    </div>
+<section id="skills" class="panel">
+<h2>Core Skills</h2>
+<div class="grid">
 
-    <div class="card">
-      <strong>Security Tools</strong>
-      <ul>
-        <li>Burp Suite, OWASP ZAP</li>
-        <li>Postman, SQLmap, Nmap</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <strong>Programming & Technologies</strong>
-      <ul>
-        <li>Python, JavaScript (Basics)</li>
-        <li>REST APIs, Git</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <strong>Computer Science Foundations</strong>
-      <ul>
-        <li>Operating Systems & Computer Networks</li>
-        <li>Secure SDLC Awareness</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <strong>Currently Learning</strong>
-      <ul>
-        <li>API Security</li>
-        <li>SBOM & DevSecOps Basics</li>
-        <li>AI Security Fundamentals</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects" class="panel content">
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="card clickable" onclick="openProject('vapt')">
-      <strong>Web Application Security Assessment (VAPT)</strong>
-    </div>
-    <div class="card clickable" onclick="openProject('secure')">
-      <strong>Secure Login Web Application</strong>
-    </div>
-  </div>
-</section>
-
-<div id="project-modal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">×</span>
-    <div id="project-details"></div>
-  </div>
+<div class="card">
+<strong>Application Security</strong>
+<ul>
+<li>Web, API, Mobile Security</li>
+<li>Threat Modeling</li>
+<li>Secure Code Review</li>
+<li>OWASP Top 10, SANS 25</li>
+</ul>
 </div>
 
+<div class="card">
+<strong>Tools</strong>
+<ul>
+<li>Burp Suite, OWASP ZAP</li>
+<li>Checkmarx, SonarQube</li>
+<li>Nmap, SQLMap, Nessus</li>
+<li>MobSF, Frida, Postman</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Automation</strong>
+<ul>
+<li>Python Automation</li>
+<li>REST API Testing</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Platforms</strong>
+<ul>
+<li>Kali Linux, Windows</li>
+<li>AWS (IAM, Security Groups)</li>
+<li>Docker, Kubernetes Basics</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="panel">
+<h2>Professional Experience</h2>
+
+<div class="card">
+<strong>Senior Security Analyst – Armo Tech</strong>
+<p>Dec 2022 – Present</p>
+<ul>
+<li>Performed Web, API, Mobile VAPT (BFSI apps)</li>
+<li>API security testing (Auth, Data Exposure)</li>
+<li>Secure code reviews</li>
+<li>Vulnerability classification (Critical → Low)</li>
+<li>Reporting & remediation support</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Junior Penetration Tester – CCL Products</strong>
+<p>Apr 2022 – Oct 2022</p>
+<ul>
+<li>Manual web testing</li>
+<li>Validated vulnerabilities</li>
+<li>Created security reports</li>
+</ul>
+</div>
+
+</section>
+
+<!-- PROJECT -->
+<section id="projects" class="panel">
+<h2>VAPT Case Study</h2>
+
+<div class="card">
+<strong>Enterprise Application Penetration Testing</strong>
+<ul>
+<li>Recon using Burp Suite & Nmap</li>
+<li>SQL Injection exploitation</li>
+<li>IDOR vulnerability discovery</li>
+<li>Data extraction via SQLMap</li>
+</ul>
+<p><strong>Impact:</strong> Data exposure, privilege escalation</p>
+<p><strong>Fix:</strong> Input validation, parameterized queries</p>
+</div>
+
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs" class="panel">
+<h2>Certifications</h2>
+
+<div class="grid">
+<div class="card"><strong>Aviatrix Certified Engineer</strong><p>Multicloud Security</p></div>
+<div class="card"><strong>Salesforce AI Associate</strong><p>Secure AI</p></div>
+<div class="card"><strong>AWS Cloud9</strong><p>Cloud Dev</p></div>
+<div class="card"><strong>IBM Cloud Certifications</strong><p>Cloud Security</p></div>
+</div>
+
+</section>
+
 <!-- CONTACT -->
-<section id="contact" class="panel content">
-  <h2>Contact</h2>
-  <div class="grid">
-    <div class="card"><strong>Email</strong><p>suresh613d@gmail.com</p></div>
-    <div class="card"><strong>LinkedIn</strong><p>linkedin.com/in/suresh6303</p></div>
-    <div class="card"><strong>GitHub</strong><p>github.com/D-suresh</p></div>
-    <div class="card"><strong>Preferred Roles</strong><p>Application Security Intern, AppSec Analyst (Entry-Level)</p></div>
-    <div class="card"><strong>Availability</strong><p>Open to On-site & Internship Roles</p></div>
-  </div>
+<section id="contact" class="panel">
+<h2>Contact</h2>
+
+<div class="grid">
+<div class="card"><strong>Email</strong><p>sureshd2808@gmail.com</p></div>
+<div class="card"><strong>Phone</strong><p>+91 8500088403</p></div>
+<div class="card"><strong>LinkedIn</strong><p>linkedin.com/in/suresh6303</p></div>
+<div class="card"><strong>GitHub</strong><p>github.com/D-suresh</p></div>
+<div class="card"><strong>TryHackMe</strong><p>tryhackme.com/p/sureshdanaboinababu</p></div>
+<div class="card"><strong>Bugcrowd</strong><p>bugcrowd.com/h/sureshD</p></div>
+<div class="card"><strong>HackTheBox</strong><p>hackthebox.com/profile/SureshBabuD</p></div>
+<div class="card"><strong>PortSwigger</strong><p>portswigger.net/sureshD</p></div>
+</div>
+
 </section>
 
 </div>
 
 <script>
-function showPanel(id) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-}
-
-function openProject(name) {
-  const modal = document.getElementById('project-modal');
-  const box = document.getElementById('project-details');
-  modal.style.display = 'flex';
-
-  if (name === 'vapt') {
-    box.innerHTML = `
-      <h2>Web Application Security Assessment (VAPT)</h2>
-      <p style="color:var(--text-muted);line-height:1.8;">
-        A learning-focused project simulating a real-world penetration testing engagement.
-        The objective was to identify vulnerabilities, understand their impact,
-        and recommend remediation.
-      </p>
-
-      <h3>🧭 Scope</h3>
-      <ul>
-        <li>Authentication & session management</li>
-        <li>User profile & account features</li>
-        <li>Input handling & API endpoints</li>
-      </ul>
-
-      <h3>🔍 Methodology</h3>
-      <ul>
-        <li>Reconnaissance & application mapping</li>
-        <li>Manual testing aligned with OWASP Top 10</li>
-        <li>Payload crafting & validation</li>
-      </ul>
-
-      <h3>🚨 Key Findings</h3>
-      <ul>
-        <li><strong>Critical – SQL Injection</strong> (CVSS 9.8)</li>
-        <li><strong>High – IDOR</strong> (CVSS 8.1)</li>
-        <li><strong>Medium – Reflected XSS</strong> (CVSS 6.1)</li>
-      </ul>
-
-      <h3>🛡️ Recommendations</h3>
-      <ul>
-        <li>Use parameterized queries</li>
-        <li>Enforce server-side authorization</li>
-        <li>Apply output encoding & security headers</li>
-      </ul>
-
-      <h3>🧰 Tools Used</h3>
-      <p>Burp Suite, SQLmap, OWASP ZAP, Nmap</p>
-    `;
-  }
-
-  if (name === 'secure') {
-    box.innerHTML = `
-      <h2>Secure Login Web Application</h2>
-      <p style="color:var(--text-muted);line-height:1.8;">
-        A project demonstrating secure authentication and authorization practices.
-      </p>
-
-      <h3>🔐 Security Controls</h3>
-      <ul>
-        <li>Password hashing</li>
-        <li>RBAC implementation</li>
-        <li>Input validation & output encoding</li>
-      </ul>
-
-      <h3>🧰 Tech Stack</h3>
-      <p>Python, SQLite, Vanilla JavaScript</p>
-    `;
-  }
-}
-
-function closeModal() {
-  document.getElementById('project-modal').style.display = 'none';
+function show(id){
+document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
 }
 </script>
 
