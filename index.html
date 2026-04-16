@@ -4,14 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Suresh Babu | Application Security Engineer</title>
+<title>Suresh Babu Danaboina | Application Security Engineer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
 <style>
 :root {
+  --accent:#00e6a8;
+  --bg-dark:#020617;
   --card:#0b1224;
-  --accent:#22c55e;
   --text:#e5e7eb;
   --muted:#94a3b8;
 }
@@ -21,66 +22,26 @@
 body{
   font-family:'Inter',sans-serif;
   color:var(--text);
+  background:var(--bg-dark);
 }
 
-/* 🔥 BACKGROUND IMAGE (FINAL FIXED) */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-
-  background-image: url("profile.png");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  opacity:0.25; /* 🔥 visible now */
-
-  z-index:-2;
-
-  animation: floatBg 40s ease-in-out infinite alternate;
-}
-
-/* 🔥 CORRECT OVERLAY (NOT HIDING IMAGE) */
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-
-  background: linear-gradient(
-    rgba(2,6,23,0.6),
-    rgba(3,10,26,0.85)
-  );
-
-  z-index:-1;
-}
-
-/* ANIMATION */
-@keyframes floatBg {
-  0%{transform:scale(1);}
-  50%{transform:scale(1.05) translate(-10px,-10px);}
-  100%{transform:scale(1.08) translate(10px,10px);}
-}
-
-/* HEADER */
+/* NAVBAR */
 header{
   position:fixed;
-  width:100%;
-  height:70px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  top:0;width:100%;height:70px;
+  display:flex;justify-content:space-between;align-items:center;
   padding:0 6%;
-  background:rgba(2,6,23,0.6);
+  background:rgba(2,6,23,0.75);
+  backdrop-filter:blur(10px);
+  z-index:10;
 }
 
 .brand{
   font-family:'JetBrains Mono';
   color:var(--accent);
+  font-size:1rem;
 }
 
-/* NAV */
 nav a{
   margin-left:20px;
   cursor:pointer;
@@ -88,63 +49,87 @@ nav a{
 }
 nav a:hover{color:var(--accent);}
 
+/* BACKGROUND IMAGE */
+.bg{
+  position:fixed;
+  top:70px;
+  width:100%;
+  height:calc(100% - 70px);
+
+  background-image:url("profile.png");
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+
+  filter:brightness(0.85) contrast(1.05);
+
+  z-index:-3;
+}
+
+/* OVERLAY (SOFT DARK) */
+.overlay{
+  position:fixed;
+  top:70px;
+  width:100%;
+  height:calc(100% - 70px);
+  background:rgba(0,0,0,0.25);
+  z-index:-2;
+}
+
+/* LIGHT EFFECT (PROFESSIONAL) */
+.light{
+  position:fixed;
+  top:70px;
+  width:100%;
+  height:calc(100% - 70px);
+  pointer-events:none;
+  z-index:-1;
+  transition:0.4s;
+}
+
 /* PANELS */
 .panel{
   display:none;
-  padding:6% 8%;
-  margin-top:70px;
-  animation:fade 0.5s ease;
+  padding:90px 8%;
+  min-height:100vh;
 }
 .panel.active{display:block;}
 
-@keyframes fade{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
-}
-
-/* TEXT */
 h1{font-size:2.8rem;margin-bottom:1rem;}
 h2{color:var(--accent);margin-bottom:1rem;}
-p{color:var(--muted);line-height:1.6;}
-
-/* CARDS */
-.card{
-  background:var(--card);
-  padding:20px;
-  margin-bottom:15px;
-  border-radius:12px;
-  transition:0.3s;
-}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 15px rgba(34,197,94,0.2);
-}
-
-/* BUTTONS */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:12px 20px;
-  margin:6px;
-  border-radius:10px;
-  text-decoration:none;
-  font-size:1rem;
-  border:1px solid var(--accent);
-  color:var(--accent);
-  transition:0.3s;
-}
-.btn:hover{
-  background:var(--accent);
-  color:#000;
-  box-shadow:0 0 20px var(--accent);
-}
+p{color:var(--muted);max-width:800px;}
 
 /* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:15px;
+}
+
+/* CARDS */
+.card{
+  background:rgba(11,18,36,0.85);
+  padding:20px;
+  border-radius:12px;
+  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  padding:10px 18px;
+  margin:5px;
+  border:1px solid var(--accent);
+  border-radius:8px;
+  color:var(--accent);
+  text-decoration:none;
+  transition:0.3s;
+}
+.btn:hover{
+  background:var(--accent);
+  color:#000;
+  box-shadow:0 0 10px var(--accent);
 }
 
 ul{margin-left:20px;margin-top:10px;}
@@ -155,7 +140,7 @@ ul{margin-left:20px;margin-top:10px;}
 <body>
 
 <header>
-<div class="brand">Suresh.</div>
+<div class="brand">Suresh Babu Danaboina</div>
 <nav>
 <a onclick="show('home')">Home</a>
 <a onclick="show('skills')">Skills</a>
@@ -166,12 +151,16 @@ ul{margin-left:20px;margin-top:10px;}
 </nav>
 </header>
 
+<div class="bg"></div>
+<div class="overlay"></div>
+<div class="light" id="light"></div>
+
 <!-- HOME -->
 <section id="home" class="panel active">
 <h1>Application Security Engineer</h1>
 <p>
-4.2+ years IT experience with 3.5+ years in Application Security & VAPT across BFSI environments.
-Specialized in Web, API & Mobile security, secure code review, and vulnerability management.
+4.2+ years IT experience with 3.5+ years in Application Security & VAPT across BFSI & enterprise environments.
+Specialized in Web, API & Mobile security, secure code review, threat modeling, and vulnerability management.
 </p>
 
 <a class="btn">📄 Resume</a>
@@ -181,7 +170,6 @@ Specialized in Web, API & Mobile security, secure code review, and vulnerability
 <!-- SKILLS -->
 <section id="skills" class="panel">
 <h2>Core Skills</h2>
-
 <div class="grid">
 
 <div class="card">
@@ -198,9 +186,8 @@ Specialized in Web, API & Mobile security, secure code review, and vulnerability
 <strong>Tools</strong>
 <ul>
 <li>Burp Suite, OWASP ZAP</li>
-<li>Checkmarx, SonarQube</li>
 <li>Nmap, SQLMap, Nessus</li>
-<li>MobSF, Frida, Postman</li>
+<li>MobSF, Frida</li>
 </ul>
 </div>
 
@@ -209,15 +196,6 @@ Specialized in Web, API & Mobile security, secure code review, and vulnerability
 <ul>
 <li>Python Automation</li>
 <li>REST API Testing</li>
-</ul>
-</div>
-
-<div class="card">
-<strong>Platforms</strong>
-<ul>
-<li>Kali Linux, Windows</li>
-<li>AWS (IAM, Security Groups)</li>
-<li>Docker, Kubernetes</li>
 </ul>
 </div>
 
@@ -231,19 +209,19 @@ Specialized in Web, API & Mobile security, secure code review, and vulnerability
 <div class="card">
 <strong>Senior Security Analyst – Armo Tech</strong>
 <ul>
-<li>Performed Web, API, Mobile VAPT for BFSI apps</li>
+<li>Web, API, Mobile VAPT for BFSI apps</li>
 <li>API security testing & vulnerability analysis</li>
 <li>Secure code review & remediation</li>
-<li>Prepared detailed reports</li>
+<li>Detailed reporting</li>
 </ul>
 </div>
 
 <div class="card">
-<strong>Junior Penetration Tester – CCL</strong>
+<strong>Junior Penetration Tester – CCL Products</strong>
 <ul>
 <li>Manual web application testing</li>
-<li>Validated vulnerabilities</li>
-<li>Prepared reports</li>
+<li>Vulnerability validation</li>
+<li>Security reporting</li>
 </ul>
 </div>
 
@@ -251,25 +229,25 @@ Specialized in Web, API & Mobile security, secure code review, and vulnerability
 
 <!-- ACHIEVEMENTS -->
 <section id="achievements" class="panel">
-<h2>Key Achievements</h2>
+<h2>Achievements</h2>
 <div class="card">
 <ul>
-<li>Reduced high & critical vulnerabilities</li>
-<li>Identified production-level issues</li>
-<li>Built automation scripts</li>
+<li>Reduced critical vulnerabilities in enterprise apps</li>
+<li>Identified high-risk production issues</li>
+<li>Developed automation scripts</li>
 </ul>
 </div>
 </section>
 
 <!-- PROFILES -->
 <section id="profiles" class="panel">
-<h2>Security Profiles</h2>
+<h2>Profiles</h2>
 
-<a class="btn" href="https://github.com/D-suresh" target="_blank">💻 GitHub</a>
-<a class="btn" href="https://tryhackme.com/p/sureshdanaboinababu" target="_blank">🧠 TryHackMe</a>
-<a class="btn" href="https://hackthebox.com/profile/SureshBabuD" target="_blank">🧩 HackTheBox</a>
-<a class="btn" href="https://bugcrowd.com/h/sureshD" target="_blank">🐞 Bugcrowd</a>
-<a class="btn" href="https://portswigger.net/sureshD" target="_blank">🛡️ PortSwigger</a>
+<a class="btn" href="https://github.com/D-suresh" target="_blank">GitHub</a>
+<a class="btn" href="https://tryhackme.com/p/sureshdanaboinababu" target="_blank">TryHackMe</a>
+<a class="btn" href="https://hackthebox.com/profile/SureshBabuD" target="_blank">HackTheBox</a>
+<a class="btn" href="https://bugcrowd.com/h/sureshD" target="_blank">Bugcrowd</a>
+<a class="btn" href="https://portswigger.net/sureshD" target="_blank">PortSwigger</a>
 
 </section>
 
@@ -277,15 +255,25 @@ Specialized in Web, API & Mobile security, secure code review, and vulnerability
 <section id="contact" class="panel">
 <h2>Contact</h2>
 
-<a class="btn" href="mailto:sureshd2808@gmail.com">📧 Email</a>
-<a class="btn" href="https://linkedin.com/in/suresh6303" target="_blank">🔗 LinkedIn</a>
+<a class="btn" href="mailto:sureshd2808@gmail.com">Email</a>
+<a class="btn" href="https://linkedin.com/in/suresh6303" target="_blank">LinkedIn</a>
 
 </section>
 
 <script>
 function show(id){
-document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  const light = document.getElementById('light');
+
+  if(id==="experience" || id==="profiles"){
+    light.style.background =
+      "radial-gradient(circle at 100% 50%, rgba(255,255,255,0.08), rgba(0,0,0,0.85) 70%)";
+  } else {
+    light.style.background =
+      "radial-gradient(circle at 0% 50%, rgba(255,255,255,0.08), rgba(0,0,0,0.85) 70%)";
+  }
 }
 </script>
 
