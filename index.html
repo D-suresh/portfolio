@@ -3,133 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Suresh Babu | Application Security Engineer</title>
 
-<!-- FONTS -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg-main:#020617;
-  --bg-panel:#0b1224;
+  --bg:#020617;
+  --card:#0b1224;
   --accent:#22c55e;
-  --text-main:#e5e7eb;
-  --text-muted:#94a3b8;
-  --border:rgba(255,255,255,0.06);
+  --text:#e5e7eb;
+  --muted:#94a3b8;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 
-/* 🔥 BACKGROUND IMAGE + ANIMATION */
 body{
   font-family:'Inter',sans-serif;
-  color:var(--text-main);
-  position:relative;
-  overflow:hidden;
+  color:var(--text);
 }
 
-/* Background image */
+/* BACKGROUND */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:url('profile.png') center/cover no-repeat;
-  opacity:0.08;
+  background:url("/portfolio/profile.png") center/cover;
+  opacity:0.12;
   z-index:-2;
-  animation:floatBg 25s ease-in-out infinite alternate;
+  animation:float 30s infinite alternate ease-in-out;
 }
 
-/* Dark overlay */
 body::after{
   content:"";
   position:fixed;
   inset:0;
-  background:linear-gradient(180deg,#020617 0%,#030a1a 100%);
-  opacity:0.95;
+  background:linear-gradient(#020617,#030a1a);
+  opacity:0.92;
   z-index:-1;
 }
 
-/* Animation */
-@keyframes floatBg {
-  0%{transform:scale(1) translate(0,0);}
-  50%{transform:scale(1.05) translate(-20px,-20px);}
+@keyframes float{
+  0%{transform:scale(1);}
   100%{transform:scale(1.08) translate(20px,20px);}
 }
 
 /* HEADER */
 header{
+  position:fixed;
+  width:100%;
   height:70px;
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:0 6%;
-  position:fixed;
-  width:100%;
   background:rgba(2,6,23,0.6);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
 }
 
 .brand{
-  font-family:'JetBrains Mono',monospace;
+  font-family:'JetBrains Mono';
   color:var(--accent);
 }
 
-nav{display:flex;gap:1.5rem;}
+/* NAV */
 nav a{
-  color:var(--text-muted);
+  margin-left:20px;
   cursor:pointer;
-  font-size:0.9rem;
+  color:var(--muted);
   transition:0.3s;
 }
 nav a:hover{color:var(--accent);}
 
 /* PANELS */
-.dashboard{padding-top:70px;}
 .panel{
   display:none;
   padding:6% 8%;
-  height:calc(100vh - 70px);
-  overflow:auto;
+  margin-top:70px;
+  animation:fade 0.5s ease;
 }
 .panel.active{display:block;}
 
-/* TYPOGRAPHY */
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* HEADINGS */
 h1{font-size:2.8rem;margin-bottom:1rem;}
-h2{font-size:2rem;margin-bottom:1.5rem;color:var(--accent);}
-p{color:var(--text-muted);line-height:1.7;max-width:850px;}
-ul{margin-top:1rem;margin-left:1.2rem;}
-li{margin-bottom:0.5rem;color:#cbd5f5;}
+h2{color:var(--accent);margin-bottom:1.2rem;}
+
+/* CARDS */
+.card{
+  background:var(--card);
+  padding:20px;
+  margin-bottom:15px;
+  border-radius:12px;
+  transition:0.3s;
+  border:1px solid rgba(255,255,255,0.05);
+}
+.card:hover{
+  transform:translateY(-6px);
+  border-color:var(--accent);
+  box-shadow:0 0 15px rgba(34,197,94,0.2);
+}
+
+/* BUTTONS */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 20px;
+  margin:6px;
+  border-radius:10px;
+  text-decoration:none;
+  font-size:1rem;
+  border:1px solid var(--accent);
+  color:var(--accent);
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:var(--accent);
+  color:#000;
+  box-shadow:0 0 20px var(--accent);
+}
+
+/* ICON STYLE */
+.btn span{
+  font-size:1.2rem;
+}
 
 /* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:1.5rem;
+  gap:15px;
 }
 
-/* CARDS */
-.card{
-  background:linear-gradient(145deg,#0b1224,#0a0f1c);
-  padding:1.5rem;
-  border-radius:14px;
-  border:1px solid var(--border);
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-5px);
-  border-color:var(--accent);
-}
-
-.card strong{
-  display:block;
-  margin-bottom:0.6rem;
-}
-
-/* SCROLL */
-::-webkit-scrollbar{width:6px;}
-::-webkit-scrollbar-thumb{background:#1f2937;border-radius:10px;}
+p{color:var(--muted);line-height:1.6;}
+ul{margin-left:20px;margin-top:10px;}
 
 </style>
 </head>
@@ -137,57 +150,44 @@ li{margin-bottom:0.5rem;color:#cbd5f5;}
 <body>
 
 <header>
-  <div class="brand">Suresh.</div>
-  <nav>
-    <a onclick="show('home')">Home</a>
-    <a onclick="show('about')">About</a>
-    <a onclick="show('skills')">Skills</a>
-    <a onclick="show('experience')">Experience</a>
-    <a onclick="show('projects')">VAPT</a>
-    <a onclick="show('certs')">Certifications</a>
-    <a onclick="show('contact')">Contact</a>
-  </nav>
+<div class="brand">Suresh.</div>
+<nav>
+<a onclick="show('home')">Home</a>
+<a onclick="show('skills')">Skills</a>
+<a onclick="show('experience')">Experience</a>
+<a onclick="show('achievements')">Achievements</a>
+<a onclick="show('profiles')">Profiles</a>
+<a onclick="show('contact')">Contact</a>
+</nav>
 </header>
-
-<div class="dashboard">
 
 <!-- HOME -->
 <section id="home" class="panel active">
 <h1>Application Security Engineer</h1>
+
 <p>
-4.2+ years IT experience with 3.5+ years in Application Security and VAPT across BFSI and enterprise environments.
-Expert in Web, API, and Mobile security testing, secure code review, and vulnerability management.
+4.2+ years IT experience with 3.5+ years in Application Security & VAPT across BFSI environments.
+Specialized in Web, API & Mobile security, secure code review, and vulnerability management.
 </p>
 
-<ul>
-<li>✔ OWASP Top 10 & SANS Top 25</li>
-<li>✔ Web, API, Mobile & Infra Security</li>
-<li>✔ Secure SDLC | Threat Modeling | Risk Assessment</li>
-</ul>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="panel">
-<h2>Professional Summary</h2>
-<p>
-Results-driven Application Security Engineer experienced in manual penetration testing,
-API security assessments, secure code reviews, and vulnerability management.
-Skilled in identifying vulnerabilities and collaborating with developers for remediation.
-</p>
+<div>
+<a class="btn" href="resume.pdf" target="_blank"><span>📄</span> Resume</a>
+<a class="btn" onclick="show('profiles')"><span>🌐</span> Profiles</a>
+</div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills" class="panel">
 <h2>Core Skills</h2>
+
 <div class="grid">
 
 <div class="card">
 <strong>Application Security</strong>
 <ul>
 <li>Web, API, Mobile Security</li>
+<li>OWASP Top 10, SANS Top 25</li>
 <li>Threat Modeling</li>
-<li>Secure Code Review</li>
-<li>OWASP Top 10, SANS 25</li>
 </ul>
 </div>
 
@@ -197,7 +197,7 @@ Skilled in identifying vulnerabilities and collaborating with developers for rem
 <li>Burp Suite, OWASP ZAP</li>
 <li>Checkmarx, SonarQube</li>
 <li>Nmap, SQLMap, Nessus</li>
-<li>MobSF, Frida, Postman</li>
+<li>MobSF, Frida</li>
 </ul>
 </div>
 
@@ -209,74 +209,57 @@ Skilled in identifying vulnerabilities and collaborating with developers for rem
 </ul>
 </div>
 
-<div class="card">
-<strong>Platforms</strong>
-<ul>
-<li>Kali Linux, Windows</li>
-<li>AWS (IAM, Security Groups)</li>
-<li>Docker, Kubernetes Basics</li>
-</ul>
-</div>
-
 </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience" class="panel">
-<h2>Professional Experience</h2>
+<h2>Experience</h2>
 
 <div class="card">
 <strong>Senior Security Analyst – Armo Tech</strong>
-<p>Dec 2022 – Present</p>
 <ul>
-<li>Performed Web, API, Mobile VAPT (BFSI apps)</li>
-<li>API security testing (Auth, Data Exposure)</li>
-<li>Secure code reviews</li>
-<li>Vulnerability classification (Critical → Low)</li>
-<li>Reporting & remediation support</li>
+<li>Performed Web, API, Mobile VAPT for BFSI apps</li>
+<li>API security testing & vulnerability analysis</li>
+<li>Secure code review & remediation</li>
+<li>Prepared detailed reports</li>
 </ul>
 </div>
 
 <div class="card">
-<strong>Junior Penetration Tester – CCL Products</strong>
-<p>Apr 2022 – Oct 2022</p>
+<strong>Junior Penetration Tester – CCL</strong>
 <ul>
-<li>Manual web testing</li>
+<li>Manual web application testing</li>
 <li>Validated vulnerabilities</li>
-<li>Created security reports</li>
+<li>Prepared reports</li>
 </ul>
 </div>
 
 </section>
 
-<!-- PROJECT -->
-<section id="projects" class="panel">
-<h2>VAPT Case Study</h2>
+<!-- ACHIEVEMENTS -->
+<section id="achievements" class="panel">
+<h2>Key Achievements</h2>
 
 <div class="card">
-<strong>Enterprise Application Penetration Testing</strong>
 <ul>
-<li>Recon using Burp Suite & Nmap</li>
-<li>SQL Injection exploitation</li>
-<li>IDOR vulnerability discovery</li>
-<li>Data extraction via SQLMap</li>
+<li>Reduced high & critical vulnerabilities in enterprise apps</li>
+<li>Identified production-level security issues</li>
+<li>Developed Python automation scripts</li>
 </ul>
-<p><strong>Impact:</strong> Data exposure, privilege escalation</p>
-<p><strong>Fix:</strong> Input validation, parameterized queries</p>
 </div>
 
 </section>
 
-<!-- CERTIFICATIONS -->
-<section id="certs" class="panel">
-<h2>Certifications</h2>
+<!-- PROFILES -->
+<section id="profiles" class="panel">
+<h2>Security Profiles</h2>
 
-<div class="grid">
-<div class="card"><strong>Aviatrix Certified Engineer</strong><p>Multicloud Security</p></div>
-<div class="card"><strong>Salesforce AI Associate</strong><p>Secure AI</p></div>
-<div class="card"><strong>AWS Cloud9</strong><p>Cloud Dev</p></div>
-<div class="card"><strong>IBM Cloud Certifications</strong><p>Cloud Security</p></div>
-</div>
+<a class="btn" href="https://github.com/D-suresh" target="_blank"><span>💻</span> GitHub</a>
+<a class="btn" href="https://tryhackme.com/p/sureshdanaboinababu" target="_blank"><span>🧠</span> TryHackMe</a>
+<a class="btn" href="https://hackthebox.com/profile/SureshBabuD" target="_blank"><span>🧩</span> HackTheBox</a>
+<a class="btn" href="https://bugcrowd.com/h/sureshD" target="_blank"><span>🐞</span> Bugcrowd</a>
+<a class="btn" href="https://portswigger.net/sureshD" target="_blank"><span>🛡️</span> PortSwigger</a>
 
 </section>
 
@@ -284,20 +267,10 @@ Skilled in identifying vulnerabilities and collaborating with developers for rem
 <section id="contact" class="panel">
 <h2>Contact</h2>
 
-<div class="grid">
-<div class="card"><strong>Email</strong><p>sureshd2808@gmail.com</p></div>
-<div class="card"><strong>Phone</strong><p>+91 8500088403</p></div>
-<div class="card"><strong>LinkedIn</strong><p>linkedin.com/in/suresh6303</p></div>
-<div class="card"><strong>GitHub</strong><p>github.com/D-suresh</p></div>
-<div class="card"><strong>TryHackMe</strong><p>tryhackme.com/p/sureshdanaboinababu</p></div>
-<div class="card"><strong>Bugcrowd</strong><p>bugcrowd.com/h/sureshD</p></div>
-<div class="card"><strong>HackTheBox</strong><p>hackthebox.com/profile/SureshBabuD</p></div>
-<div class="card"><strong>PortSwigger</strong><p>portswigger.net/sureshD</p></div>
-</div>
+<a class="btn" href="mailto:sureshd2808@gmail.com"><span>📧</span> Email</a>
+<a class="btn" href="https://linkedin.com/in/suresh6303" target="_blank"><span>🔗</span> LinkedIn</a>
 
 </section>
-
-</div>
 
 <script>
 function show(id){
