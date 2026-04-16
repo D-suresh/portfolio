@@ -24,36 +24,41 @@ body{
   color:var(--text);
 }
 
-/* 🔥 BACKGROUND IMAGE FIXED (NO MORE ISSUES) */
+/* 🔥 FINAL BACKGROUND FIX */
 body::before{
   content:"";
   position:fixed;
   inset:0;
 
-  background-image: url("https://d-suresh.github.io/portfolio/profile.png");
+  /* ✅ FINAL WORKING PATH */
+  background-image: url("profile.png");
 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  opacity:0.15;
+  opacity:0.18; /* increased so you SEE it clearly */
+
   z-index:-2;
 
-  animation: float 30s ease-in-out infinite alternate;
+  animation: floatBg 40s ease-in-out infinite alternate;
 }
 
+/* DARK OVERLAY */
 body::after{
   content:"";
   position:fixed;
   inset:0;
-  background:linear-gradient(#020617,#030a1a);
-  opacity:0.92;
+  background:linear-gradient(180deg,#020617 0%,#030a1a 100%);
+  opacity:0.85;
   z-index:-1;
 }
 
-@keyframes float{
+/* SMOOTH ANIMATION */
+@keyframes floatBg {
   0%{transform:scale(1);}
-  100%{transform:scale(1.08) translate(20px,20px);}
+  50%{transform:scale(1.05) translate(-10px,-10px);}
+  100%{transform:scale(1.08) translate(10px,10px);}
 }
 
 /* HEADER */
@@ -78,7 +83,6 @@ nav a{
   margin-left:20px;
   cursor:pointer;
   color:var(--muted);
-  transition:0.3s;
 }
 nav a:hover{color:var(--accent);}
 
@@ -99,7 +103,7 @@ nav a:hover{color:var(--accent);}
 /* TEXT */
 h1{font-size:2.8rem;margin-bottom:1rem;}
 h2{color:var(--accent);margin-bottom:1rem;}
-p{color:var(--muted);}
+p{color:var(--muted);line-height:1.6;}
 
 /* CARDS */
 .card{
@@ -128,7 +132,6 @@ p{color:var(--muted);}
   color:var(--accent);
   transition:0.3s;
 }
-
 .btn:hover{
   background:var(--accent);
   color:#000;
@@ -164,12 +167,12 @@ ul{margin-left:20px;margin-top:10px;}
 <!-- HOME -->
 <section id="home" class="panel active">
 <h1>Application Security Engineer</h1>
-
 <p>
 4.2+ years IT experience with 3.5+ years in Application Security & VAPT across BFSI environments.
+Specialized in Web, API & Mobile security, secure code review, and vulnerability management.
 </p>
 
-<a class="btn" href="resume.pdf" target="_blank">📄 Resume</a>
+<a class="btn">📄 Resume</a>
 <a class="btn" onclick="show('profiles')">🌐 Profiles</a>
 </section>
 
@@ -178,24 +181,67 @@ ul{margin-left:20px;margin-top:10px;}
 <h2>Core Skills</h2>
 
 <div class="grid">
-<div class="card">Web, API, Mobile Security</div>
-<div class="card">OWASP Top 10, SANS Top 25</div>
-<div class="card">Burp Suite, Nmap, SQLMap</div>
-<div class="card">Python Automation</div>
+
+<div class="card">
+<strong>Application Security</strong>
+<ul>
+<li>Web, API, Mobile Security</li>
+<li>OWASP Top 10, SANS Top 25</li>
+<li>Threat Modeling</li>
+<li>Secure Code Review</li>
+</ul>
 </div>
 
+<div class="card">
+<strong>Tools</strong>
+<ul>
+<li>Burp Suite, OWASP ZAP</li>
+<li>Checkmarx, SonarQube</li>
+<li>Nmap, SQLMap, Nessus</li>
+<li>MobSF, Frida, Postman</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Automation</strong>
+<ul>
+<li>Python Automation</li>
+<li>REST API Testing</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Platforms</strong>
+<ul>
+<li>Kali Linux, Windows</li>
+<li>AWS (IAM, Security Groups)</li>
+<li>Docker, Kubernetes</li>
+</ul>
+</div>
+
+</div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience" class="panel">
-<h2>Experience</h2>
+<h2>Professional Experience</h2>
 
 <div class="card">
 <strong>Senior Security Analyst – Armo Tech</strong>
 <ul>
-<li>Web, API, Mobile VAPT</li>
-<li>Secure Code Review</li>
-<li>Vulnerability Management</li>
+<li>Web, API, Mobile VAPT for BFSI apps</li>
+<li>API security testing & vulnerability analysis</li>
+<li>Secure code review & remediation</li>
+<li>Prepared detailed reports</li>
+</ul>
+</div>
+
+<div class="card">
+<strong>Junior Penetration Tester – CCL</strong>
+<ul>
+<li>Manual web application testing</li>
+<li>Validated vulnerabilities</li>
+<li>Prepared reports</li>
 </ul>
 </div>
 
@@ -203,10 +249,11 @@ ul{margin-left:20px;margin-top:10px;}
 
 <!-- ACHIEVEMENTS -->
 <section id="achievements" class="panel">
-<h2>Achievements</h2>
+<h2>Key Achievements</h2>
 <div class="card">
 <ul>
-<li>Reduced critical vulnerabilities</li>
+<li>Reduced high & critical vulnerabilities</li>
+<li>Identified production-level issues</li>
 <li>Built automation scripts</li>
 </ul>
 </div>
@@ -214,7 +261,7 @@ ul{margin-left:20px;margin-top:10px;}
 
 <!-- PROFILES -->
 <section id="profiles" class="panel">
-<h2>Profiles</h2>
+<h2>Security Profiles</h2>
 
 <a class="btn" href="https://github.com/D-suresh" target="_blank">💻 GitHub</a>
 <a class="btn" href="https://tryhackme.com/p/sureshdanaboinababu" target="_blank">🧠 TryHackMe</a>
